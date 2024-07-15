@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://godtf8oakhgy"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_ygudu"]
+[ext_resource type="PackedScene" uid="uid://d1581tvhyplmr" path="res://scenes/game_scene.tscn" id="2_4m8ah"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ygudu")
+
+[node name="GamePanel" type="Panel" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameScene" parent="GamePanel" instance=ExtResource("2_4m8ah")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="FinalPasswordLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 300
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 126.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "재시작"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/RestartButton" to="." method="_on_button_pressed"]
